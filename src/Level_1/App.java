@@ -10,7 +10,7 @@ public class App {
         Queue<Integer> results = new LinkedList<>();
         int count = 0;
 
-            while (true) { //반복문
+        while (true) { //반복문
             System.out.println("첫 번째 숫자를 입력하세요: ");
             // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
             int a = sc.nextInt();
@@ -57,15 +57,27 @@ public class App {
                     results.offer(result);
                 }
                 System.out.println("결과: " + result); // 최종 결과 출력
-
             }
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String input = sc.nextLine();
+            if (input.equalsIgnoreCase("remove")) {
+                if(!results.isEmpty()){
+                    results.poll();
+                    System.out.println("가장 오래 된 결과 삭제 완료");
+                }
+                else {
+                    System.out.println("저장된 결과가 없습니다.");
+                }
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             /* exit을 입력 받으면 반복 종료 */
-                String input = sc.nextLine();
-                if (input.equalsIgnoreCase("exit")) {
-                    System.out.println("프로그램을 종료합니다");
-                    break;
-                }
+            String continueInput = sc.nextLine();
+            if (continueInput.equalsIgnoreCase("exit")) {
+                System.out.println("프로그램을 종료합니다");
+                break;
+            }
         }
     }
 }
